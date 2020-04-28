@@ -53,7 +53,6 @@ public class FileUploader {
     }
 
     public static String getFileAppUrl() {
-        System.out.println("getFileAppUrl: " + urlPath + getFileName());
         return urlPath + getFileName();
     }
 

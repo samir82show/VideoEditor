@@ -6,26 +6,69 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
+    <h2>#{videoController.video.concatPathName}</h2>
+    <br /><br />
     <h:body>
         <video id="myVideo" controls="controls">
             <source src="#{videoController.video.concatPathName}" type="video/mp4"/>
         </video>
-        <h:form id="timeForm">
-            <h:commandButton value="getTime" onclick="getCurTime()">
-                <f:ajax />
+        <h:form id="timeForm" prependId="false">
+            <h:inputHidden id="hiddenstartTtime"/>
+            <h:inputHidden id="hiddenendTime"/>
+            <h:commandButton value="Cut" action="#{videoController.runCommand()}" onclick="">
+                <f:ajax onevent="monitor"/>
             </h:commandButton>
         </h:form>
-
+        <br /><br />
+        <h:graphicImage id="image" value="#{resource['image/source.gif']}" style="display:none; height: 10; width: 10"></h:graphicImage>
+        <br /><br />
+        <table border="2">
+            <tr>
+                <th>
+                    <button id="start" name="assign video time" onclick="setStartTime()" >start time</button> 
+                </th>
+                <td>
+                    <h:outputLabel id="starttimeLabel"/>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <button id="end" name="assign video time" onclick="setEndTime()" >end time</button>
+                </th>
+                <td>
+                    <h:outputLabel id="endtimeLabel"/>
+                </td>
+            </tr>
+        </table>
         <script>
-            var vid = document.getElementById("myVideo");
+            var video = document.getElementById("myVideo");
 
-            function getCurTime() {
-                alert(Math.round(vid.currentTime));
+            document.getElementById("starttimeLabel").innerHTML = 0;
+            document.getElementById("endtimeLabel").innerHTML = 0;
+
+            function monitor(data) {
+                var loading = document.getElementById("image");
+                if (data.status == "begin") {
+                    loading.style.display = "block";
+                } else if (data.status == "success") {
+                    loading.style.display = "none";
+                }
             }
 
-            function setCurTime() {
-                vid.currentTime = 5;
+            function setStartTime() {
+                document.getElementById("hiddenstartTtime").value = Math.round(video.currentTime);
+                document.getElementById("starttimeLabel").innerHTML = Math.round(video.currentTime);
             }
+
+            function setEndTime() {
+
+                document.getElementById("hiddenendTime").value = Math.round(video.currentTime);
+                document.getElementById("endtimeLabel").innerHTML = Math.round(video.currentTime);
+            }
+            document.addEventListener('contextmenu', function (e) {
+                e.preventDefault();
+            });
+
         </script> 
 
     </h:body>
