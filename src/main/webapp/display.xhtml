@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>SVidetor</title>
+         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/main_css.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h2>#{videoController.video.concatPathName}</h2>
+    <br /><br />
+    <h:body>
+        <div class="main_display">
+            <h2 style="color: #0066cc;">SVidetor</h2>
+            <div class="inst">
+                <h3>How To cut your video:</h3>
+                <p>1- Choose the Start time in the video and press (Start Time) button.</p>
+                <p>2- Choose the End time in the video and press (End Time) button.</p>
+                <p>3- Press CUT.</p>
+            </div>
+            <video id="myVideo" controls="controls">
+                <source src="#{videoController.video.concatPathName}" type="video/mp4"/>
+            </video>
+            <br /><br />
+            <h:form id="timeForm" prependId="false">
+                <h:inputHidden id="hiddenstartTtime"/>
+                <h:inputHidden id="hiddenendTime"/>
+                <button id="start" name="assign video time" onclick="setStartTime()" >start time</button> 
+                <h:outputLabel id="starttimeLabel"/>
+                <button id="end" name="assign video time" onclick="setEndTime()" >end time</button>
+                <h:outputLabel id="endtimeLabel"/>
+                <br />
+                <h:commandButton value="Cut" action="#{videoController.runCommand()}" class="uploadbtn" onclick="">
+                    <f:ajax onevent="monitor"/>
+                </h:commandButton>
+            </h:form>
+            <br /><br />
+            <h:graphicImage id="image" value="#{resource['image/source.gif']}" style="display:none; height: 10px; width: 10px;"></h:graphicImage>
+        </div>
+        <script>
+            var video = document.getElementById("myVideo");
+
+            document.getElementById("starttimeLabel").innerHTML = 0;
+            document.getElementById("endtimeLabel").innerHTML = 0;
+
+            function monitor(data) {
+                var loading = document.getElementById("image");
+                if (data.status == "begin") {
+                    loading.style.display = "block";
+                } else if (data.status == "success") {
+                    loading.style.display = "none";
+                }
+            }
+
+            function setStartTime() {
+                document.getElementById("hiddenstartTtime").value = Math.round(video.currentTime);
+                document.getElementById("starttimeLabel").innerHTML = Math.round(video.currentTime);
+            }
+
+            function setEndTime() {
+
+                document.getElementById("hiddenendTime").value = Math.round(video.currentTime);
+                document.getElementById("endtimeLabel").innerHTML = Math.round(video.currentTime);
+            }
+            //            document.addEventListener('contextmenu', function (e) {
+            //                e.preventDefault();
+            //            });
+
+        </script> 
+
+    </h:body>
+</html>
+

@@ -1,0 +1,108 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 29, 2020, 8:12:54 PM
+    Author     : Nooshi
+*/
+
+/**--------------------index page--------------*/
+/**Body*/
+*, *::before, *::after{
+    box-sizing: border-box;;
+}
+body, html{
+    background-color: #f2f3f7;
+    min-width: 320px;
+    width: auto !important;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: arial, Helvetica, sans-serif; 
+    line-height: 30px;
+}
+.main{
+    width: 300px;
+    height: auto ;
+    margin: 0 auto;
+    font-size: 16px ;
+    text-align: center;
+    border: 1px solid #0066cc; 
+    background-color: #f2f3f7; 
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.form ,input{
+    padding: 10px;
+    font-weight: bold;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+div.center{
+    width: 100%;
+    height: auto;
+}
+.uploadbtn{
+    border: 1px solid #0066cc;
+    background-color: #0066cc;
+    border-radius: 5px;
+    padding: 8px 16px;;
+    color: #f2f3f7;
+    font-size: 25px;
+    display: block;
+    margin-top: 30px;
+}
+
+/**--------------------display page--------------*/
+.main_display{
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #0066cc;
+    border-radius: 5px;
+}   
+.inst{
+    text-align: left;
+    padding: 0px 15px;
+    line-height: 20px;
+} 
+#myVideo{
+    width: 90%;
+    height: auto;
+}
+#start, #end{
+    background-color: #f2f3f7;
+    border: 2px solid #0066cc;
+    padding: 8px 16px;
+    border-radius: 5px;
+    margin: 15px;
+}
+
+/**------------download page------------*/
+
+.center_link{
+    width: 50%;
+    margin: 50% auto;
+    padding: 20px;
+}
+div.downloadLink{
+    width: fit-content;
+    height: auto;
+    border: 1px solid #0066cc;
+    background-color: #0066cc;
+    color: #f2f3f7;
+    padding: 10px 20px;
+    font-size: 35px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 5px;
+}

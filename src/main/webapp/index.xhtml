@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Video Editor</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/main_css.css" rel="stylesheet" type="text/css"/>
+
+    </h:head>
+    <h:body>
+        <div class="main">
+            <h2 style="color: #0066cc;">Welcome to SVidetor</h2>
+            <div class="form">
+                <h:form enctype="multipart/form-data">
+                    <h:outputLabel value="Upload you video: " style="font-size: 16px;"/>
+                    <br />
+                    <h:inputFile id="image" value="#{videoController.video.video}" title="File"/><br />
+                    <h:commandButton action="#{videoController.uploadVideo()}" class="uploadbtn" value="Upload and go"/>
+                </h:form>
+            </div>
+            <br /><br/>
+        </div>
+    </h:body>
+</html>
+
