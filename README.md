@@ -1,1 +1,1 @@
-"# VideoEditor" 
+"# VideoEditor" styles
